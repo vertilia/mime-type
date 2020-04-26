@@ -5,13 +5,13 @@ namespace Vertilia\MimeType;
 
 class ApplicationXWwwFormUrlencoded implements MimeTypeInterface
 {
-    public static function decode(string $content, $options = null)
+    public function decode(string $content)
     {
         \parse_str($content, $values);
         return $values;
     }
 
-    public static function encode($content, $options = null): string
+    public function encode($content): string
     {
         return \http_build_query($content);
     }

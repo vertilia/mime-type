@@ -11,24 +11,6 @@ class ApplicationJsonTest extends TestCase
 {
     /**
      * @dataProvider content2WayProvider
-     * @covers ::decode
-     * @param string $encoded
-     * @param mixed $options
-     * @param mixed $decoded
-     */
-    public function testDecode($encoded, $options, $decoded)
-    {
-        $mime = new ApplicationJson();
-        $value = $mime->decode($encoded, $options);
-        $this->assertTrue(
-            \is_object($value)
-                ? ($decoded == $value)
-                : ($decoded === $value)
-        );
-    }
-
-    /**
-     * @dataProvider content2WayProvider
      * @covers ::encode
      * @param string $encoded
      * @param mixed $options
@@ -36,8 +18,26 @@ class ApplicationJsonTest extends TestCase
      */
     public function testEncode($encoded, $options, $decoded)
     {
-        $mime = new ApplicationJson();
-        $this->assertTrue($encoded === $mime->encode($decoded, $options));
+        $mime = new ApplicationJson($options);
+        $this->assertTrue($encoded === $mime->encode($decoded));
+    }
+
+    /**
+     * @dataProvider content2WayProvider
+     * @covers ::decode
+     * @param string $encoded
+     * @param mixed $options
+     * @param mixed $decoded
+     */
+    public function testDecode($encoded, $options, $decoded)
+    {
+        $mime = new ApplicationJson(null, $options);
+        $value = $mime->decode($encoded);
+        $this->assertTrue(
+            \is_object($value)
+                ? ($decoded == $value)
+                : ($decoded === $value)
+        );
     }
 
     /** data provider */

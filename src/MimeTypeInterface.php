@@ -6,16 +6,14 @@ namespace Vertilia\MimeType;
 interface MimeTypeInterface
 {
     /**
-     * @param string $content
-     * @param int $options
-     * @return mixed
-     */
-    public static function decode(string $content, $options = null);
-
-    /**
      * @param mixed $content
-     * @param int $options
      * @return string
      */
-    public static function encode($content, $options = null): string;
+    public function encode($content): string;
+
+    /**
+     * @param string $content
+     * @return mixed
+     */
+    public function decode(string $content);
 }

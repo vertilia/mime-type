@@ -11,20 +11,6 @@ class ApplicationXWwwFormUrlencodedTest extends TestCase
 {
     /**
      * @dataProvider content2WayProvider
-     * @dataProvider contentDecodeProvider
-     * @covers ::decode
-     * @param string $encoded
-     * @param mixed $decoded
-     */
-    public function testDecode($encoded, $decoded)
-    {
-        $mime = new ApplicationXWwwFormUrlencoded();
-        $value = $mime->decode($encoded, $options);
-        $this->assertEquals($decoded, $value);
-    }
-
-    /**
-     * @dataProvider content2WayProvider
      * @dataProvider contentEncodeProvider
      * @covers ::encode
      * @param string $encoded
@@ -33,7 +19,21 @@ class ApplicationXWwwFormUrlencodedTest extends TestCase
     public function testEncode($encoded, $decoded)
     {
         $mime = new ApplicationXWwwFormUrlencoded();
-        $this->assertEquals($encoded, $mime->encode($decoded, $options));
+        $this->assertEquals($encoded, $mime->encode($decoded));
+    }
+
+    /**
+     * @dataProvider content2WayProvider
+     * @dataProvider contentDecodeProvider
+     * @covers ::decode
+     * @param string $encoded
+     * @param mixed $decoded
+     */
+    public function testDecode($encoded, $decoded)
+    {
+        $mime = new ApplicationXWwwFormUrlencoded();
+        $value = $mime->decode($encoded);
+        $this->assertEquals($decoded, $value);
     }
 
     /** data provider */

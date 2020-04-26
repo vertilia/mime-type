@@ -5,13 +5,27 @@ namespace Vertilia\MimeType;
 
 class ApplicationJson implements MimeTypeInterface
 {
-    public static function decode(string $content, $options = null)
+    protected $encode_options = 0;
+    protected $decode_options = 0;
+
+    public function __construct($encode_options = null, $decode_options = null)
     {
-        return \json_decode($content, (bool)($options & \JSON_OBJECT_AS_ARRAY), 512, $options ?: 0);
+        $this->encode_options = (int)$encode_options ?: 0;
+        $this->decode_options = (int)$decode_options ?: 0;
     }
 
-    public static function encode($content, $options = null): string
+    public function encode($content): string
     {
-        return \json_encode($content, $options ?: 0);
+        return \json_encode($content, $this->encode_options);
+    }
+
+    public function decode(string $content)
+    {
+        return \json_decode(
+            $content,
+            (bool)($this->decode_options & \JSON_OBJECT_AS_ARRAY),
+            512,
+            $this->decode_options
+        );
     }
 }
