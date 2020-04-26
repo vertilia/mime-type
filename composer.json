@@ -1,0 +1,23 @@
+{
+  "name": "vertilia/mime-type",
+  "description": "Simple library to abstract mime types",
+  "license": "BSD-2-Clause",
+  "type": "library",
+  "autoload": {
+    "exclude-from-classmap": [
+      "/tests/"
+    ],
+    "psr-4": {
+      "Vertilia\\MimeType\\": "src/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true
+  },
+  "require": {
+    "php": "^7.1"
+  },
+  "suggest": {
+    "phpunit/phpunit": "To run tests"
+  }
+}
