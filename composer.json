@@ -11,17 +11,11 @@
       "Vertilia\\MimeType\\": "src/"
     }
   },
-  "config": {
-    "optimize-autoloader": true,
-    "platform": {
-      "php": "7.4.0"
-    }
-  },
   "require": {
-    "php": "^7.4",
+    "php": ">=7.4",
     "ext-json": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "^9.5"
+    "phpunit/phpunit": "*"
   }
 }
