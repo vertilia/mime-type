@@ -1,6 +1,7 @@
 {
   "name": "vertilia/mime-type",
   "description": "Simple library to abstract mime types",
+  "keywords": ["mime", "type", "request", "json", "xml", "text"],
   "license": "BSD-2-Clause",
   "type": "library",
   "autoload": {
@@ -13,7 +14,8 @@
   },
   "require": {
     "php": ">=7.4",
-    "ext-json": "*"
+    "ext-json": "*",
+    "ext-simplexml": "*"
   },
   "require-dev": {
     "phpunit/phpunit": "*"

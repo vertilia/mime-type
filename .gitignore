@@ -9,3 +9,6 @@ Thumbs.db
 # composer
 composer.lock
 vendor/
+
+# phpunit
+.phpunit.result.cache
